@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
-import './appEssentials.dart';
+import './theme/theme_bloc.dart';
+import './screens/homeScreen.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -13,15 +14,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "GDG DEVFEST",
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-        accentColor: Colors.black,
-        fontFamily: GoogleFonts.dmSans().fontFamily,
+    return BlocProvider(
+      create: (context) => ThemeBloc(),
+      child: BlocBuilder<ThemeBloc, ThemeData>(
+        builder: (context, theme) {
+          return MaterialApp(
+            title: "GDG DEVFEST",
+            debugShowCheckedModeBanner: false,
+            theme: theme,
+            home: DevFest(),
+          );
+        },
       ),
-      home: DevFest(),
     );
   }
 }
@@ -29,21 +33,28 @@ class _MyAppState extends State<MyApp> {
 class DevFest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: HomeScreen(),
+    );
   }
 }
 
 Future<void> main() async {
-  SystemChrome.setSystemUIOverlayStyle(
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
+
+  /* SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
-  ]);
+  ]); */
 
-  AppEssentials.preferences = await SharedPreferences.getInstance();
+  // AppEssentials.preferences = await SharedPreferences.getInstance();
 
   runApp(MyApp());
 }
