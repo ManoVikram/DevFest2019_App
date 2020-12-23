@@ -34,17 +34,15 @@ class _MyAppState extends State<MyApp> {
 class DevFest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: HomeScreen(),
-    );
+    return HomeScreen();
   }
 }
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: await getApplicationDocumentsDirectory(),
-  );
+      // storageDirectory: await getApplicationDocumentsDirectory(),
+      );
 
   /* SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: Colors.transparent),

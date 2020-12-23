@@ -11,7 +11,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
           ThemeState(
             false,
             ThemeData.light().copyWith(
-              textTheme: ThemeData.dark().textTheme.apply(
+              textTheme: ThemeData.light().textTheme.apply(
                     fontFamily: GoogleFonts.dmSans().fontFamily,
                   ),
             ),
@@ -21,7 +21,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
   static final _lightTheme = ThemeState(
     false,
     ThemeData.light().copyWith(
-      textTheme: ThemeData.dark().textTheme.apply(
+      textTheme: ThemeData.light().textTheme.apply(
             fontFamily: GoogleFonts.dmSans().fontFamily,
           ),
     ),
@@ -29,7 +29,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
   static final _darkTheme = ThemeState(
     true,
     ThemeData.dark().copyWith(
-      textTheme: ThemeData.light().textTheme.apply(
+      textTheme: ThemeData.dark().textTheme.apply(
             fontFamily: GoogleFonts.dmSans().fontFamily,
           ),
     ),
@@ -53,7 +53,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
         return ThemeState(
           false,
           ThemeData.light().copyWith(
-            textTheme: ThemeData.dark().textTheme.apply(
+            textTheme: ThemeData.light().textTheme.apply(
                   fontFamily: GoogleFonts.dmSans().fontFamily,
                 ),
           ),
@@ -62,7 +62,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
       return ThemeState(
         true,
         ThemeData.dark().copyWith(
-          textTheme: ThemeData.light().textTheme.apply(
+          textTheme: ThemeData.dark().textTheme.apply(
                 fontFamily: GoogleFonts.dmSans().fontFamily,
               ),
         ),
@@ -80,7 +80,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
             ThemeState(
               false,
               ThemeData.light().copyWith(
-                textTheme: ThemeData.dark().textTheme.apply(
+                textTheme: ThemeData.light().textTheme.apply(
                       fontFamily: GoogleFonts.dmSans().fontFamily,
                     ),
               ),
