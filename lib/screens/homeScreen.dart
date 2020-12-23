@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../theme/theme_bloc.dart';
 import '../theme/theme_event.dart';
+import '../theme/theme_state.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -11,21 +12,11 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Theme"),
-        /* actions: [
-          BlocBuilder<ThemeBloc, ThemeData>(
+        actions: [
+          BlocBuilder<ThemeBloc, ThemeState>(
             builder: (context, theme) {
-              return theme == ThemeData.dark()
+              return theme.isDarkThemeOn
                   ? InkWell(
-                      onTap: () {
-                        print(1);
-                        return bloc.add(const LightTheme());
-                      },
-                      child: Icon(
-                        Icons.lightbulb_outline,
-                        color: Colors.white,
-                      ),
-                    )
-                  : InkWell(
                       onTap: () {
                         print(2);
                         print(theme);
@@ -35,12 +26,22 @@ class HomeScreen extends StatelessWidget {
                         Icons.lightbulb,
                         color: Colors.yellow,
                       ),
+                    )
+                  : InkWell(
+                      onTap: () {
+                        print(1);
+                        return bloc.add(const LightTheme());
+                      },
+                      child: Icon(
+                        Icons.lightbulb_outline,
+                        color: Colors.white,
+                      ),
                     );
             },
           )
-        ], */
+        ],
       ),
-      body: BlocBuilder<ThemeBloc, ThemeData>(
+      body: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
           return Center(
             child: Column(
