@@ -52,9 +52,15 @@ class AgendaScreen extends StatelessWidget {
             ),
             body: TabBarView(
               children: [
-                SessionList(),
-                Container(),
-                Container(),
+                SessionList(
+                  tab: "cloud",
+                ),
+                SessionList(
+                  tab: "mobile",
+                ),
+                SessionList(
+                  tab: "web",
+                ),
               ],
             ),
           ),

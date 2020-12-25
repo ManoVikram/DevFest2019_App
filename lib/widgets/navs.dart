@@ -6,6 +6,8 @@ import '../theme/theme_bloc.dart';
 import '../theme/theme_state.dart';
 import '../screens/agendaScreen.dart';
 import '../screens/speakersScreen.dart';
+import '../screens/teamScreen.dart';
+import '../screens/sponsorsScreen.dart';
 
 class Navs extends StatelessWidget {
   @override
@@ -45,7 +47,9 @@ class Navs extends StatelessWidget {
               boxShadow: theme.isDarkThemeOn ? null : _boxShadow,
             ),
             TappableCard(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(TeamScreen.routeName);
+              },
               title: "Team",
               color: theme.isDarkThemeOn ? Color(0xFF1F2124) : Colors.grey[50],
               icon: Icons.people,
@@ -53,7 +57,9 @@ class Navs extends StatelessWidget {
               boxShadow: theme.isDarkThemeOn ? null : _boxShadow,
             ),
             TappableCard(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(SponsorsScreen.routeName);
+              },
               title: "Sponsors",
               color: theme.isDarkThemeOn ? Color(0xFF1F2124) : Colors.grey[50],
               icon: Icons.attach_money,

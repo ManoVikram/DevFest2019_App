@@ -9,8 +9,13 @@ import './theme/theme_state.dart';
 import './screens/homeScreen.dart';
 import './screens/agendaScreen.dart';
 import './screens/speakersScreen.dart';
+import './screens/sessionDetailsScreen.dart';
+import './screens/teamScreen.dart';
+import './screens/sponsorsScreen.dart';
 import './models/speakers.dart';
 import './models/sessions.dart';
+import './models/team.dart';
+import './models/sponsors.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -35,6 +40,12 @@ class _MyAppState extends State<MyApp> {
               /* Provider<Session>(
                 create: (contxt) => Session(),
               ), */
+              ChangeNotifierProvider(
+                create: (contxt) => Team(),
+              ),
+              ChangeNotifierProvider(
+                create: (contxt) => Sponsors(),
+              ),
             ],
             child: MaterialApp(
               title: "GDG DEVFEST",
@@ -44,6 +55,10 @@ class _MyAppState extends State<MyApp> {
               routes: {
                 AgendaScreen.routeName: (contxt) => AgendaScreen(),
                 SpeakersScreen.routeName: (contxt) => SpeakersScreen(),
+                SessionDetailsScreen.routeName: (contxt) =>
+                    SessionDetailsScreen(),
+                TeamScreen.routeName: (contxt) => TeamScreen(),
+                SponsorsScreen.routeName: (contxt) => SponsorsScreen(),
               },
             ),
           );
