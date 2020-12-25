@@ -7,6 +7,10 @@ import '../theme/theme_bloc.dart';
 import '../theme/theme_state.dart';
 
 class SocialMedia extends StatelessWidget {
+  final bool ishome;
+
+  SocialMedia({this.ishome = false});
+
   void _launchURL(String url) async {
     if (await canLaunch(url)) {
       launch(url);
@@ -26,6 +30,7 @@ class SocialMedia extends StatelessWidget {
               IconButton(
                 icon: FaIcon(
                   FontAwesomeIcons.github,
+                  size: ishome ? 24 : 20,
                 ),
                 color: theme.isDarkThemeOn ? Colors.grey[100] : Colors.grey,
                 onPressed: () => _launchURL("https://github.com/ManoVikram"),
@@ -33,6 +38,7 @@ class SocialMedia extends StatelessWidget {
               IconButton(
                 icon: FaIcon(
                   FontAwesomeIcons.twitter,
+                  size: ishome ? 24 : 20,
                 ),
                 color: theme.isDarkThemeOn ? Colors.grey[100] : Colors.grey,
                 onPressed: () => _launchURL("https://twitter.com/ManoVik18"),
@@ -40,39 +46,42 @@ class SocialMedia extends StatelessWidget {
               IconButton(
                 icon: FaIcon(
                   FontAwesomeIcons.linkedinIn,
+                  size: ishome ? 24 : 20,
                 ),
                 color: theme.isDarkThemeOn ? Colors.grey[100] : Colors.grey,
                 onPressed: () => _launchURL(
                     "https://www.linkedin.com/in/mano-vikram-1398a11b6/"),
               ),
-              IconButton(
-                icon: FaIcon(
-                  FontAwesomeIcons.instagram,
+              if (ishome)
+                IconButton(
+                  icon: FaIcon(
+                    FontAwesomeIcons.instagram,
+                  ),
+                  color: theme.isDarkThemeOn ? Colors.grey[100] : Colors.grey,
+                  onPressed: () =>
+                      _launchURL("https://www.instagram.com/mano_vikram.18/"),
                 ),
-                color: theme.isDarkThemeOn ? Colors.grey[100] : Colors.grey,
-                onPressed: () =>
-                    _launchURL("https://www.instagram.com/mano_vikram.18/"),
-              ),
-              IconButton(
-                icon: FaIcon(
-                  FontAwesomeIcons.envelope,
-                ),
-                color: theme.isDarkThemeOn ? Colors.grey[100] : Colors.grey,
-                onPressed: () {
-                  /* final String url =
+              if (ishome)
+                IconButton(
+                  icon: FaIcon(
+                    FontAwesomeIcons.envelope,
+                  ),
+                  color: theme.isDarkThemeOn ? Colors.grey[100] : Colors.grey,
+                  onPressed: () {
+                    /* final String url =
                       "mailto:18x022@psgtech.ac.in?subject=Support needed for DevFest";
                   _launchURL(Uri.encodeFull(url)); */
-                  // Alternative
-                  final Uri _emailLaunchUri = Uri(
-                    scheme: "mailto",
-                    path: "18x022@psgtech.ac.in",
-                    queryParameters: {
-                      "subject": "Support needed for DevFest",
-                    },
-                  );
-                  _launchURL(_emailLaunchUri.toString());
-                },
-              ),
+                    // Alternative
+                    final Uri _emailLaunchUri = Uri(
+                      scheme: "mailto",
+                      path: "18x022@psgtech.ac.in",
+                      queryParameters: {
+                        "subject": "Support needed for DevFest",
+                      },
+                    );
+                    _launchURL(_emailLaunchUri.toString());
+                  },
+                ),
             ],
           );
         },

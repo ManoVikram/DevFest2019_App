@@ -36,6 +36,8 @@ class ScaffoldBase extends StatelessWidget {
               backgroundColor:
                   theme.isDarkThemeOn ? Colors.black : Colors.white,
               appBar: AppBar(
+                iconTheme: Theme.of(context).iconTheme,
+                textTheme: Theme.of(context).textTheme,
                 title: Text(
                   title,
                   style: TextStyle(

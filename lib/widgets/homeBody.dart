@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import './socialMedia.dart';
+import './navs.dart';
 import '../theme/theme_bloc.dart';
 import '../theme/theme_state.dart';
 
@@ -66,7 +67,13 @@ class HomeBody extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                SocialMedia(),
+                Navs(),
+                SizedBox(
+                  height: 20,
+                ),
+                SocialMedia(
+                  ishome: true,
+                ),
                 SizedBox(
                   height: 20,
                 ),
